@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 project(program_options VERSION 1.0 LANGUAGES CXX)
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 file(GLOB LIBOPTS_SRC src/*.cpp)
 file(GLOB LIBOPTS_INC program_opts/*.h)
