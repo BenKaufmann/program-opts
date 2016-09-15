@@ -5,17 +5,14 @@ file(GLOB LIBOPTS_SRC src/*.cpp)
 file(GLOB LIBOPTS_INC program_opts/*.h)
 file(GLOB LIBOPTS_DTL program_opts/detail/*.h)
 
-# create library
-add_library(program_opts
-	${LIBOPTS_INC}
-	${LIBOPTS_DTL}
-	${LIBOPTS_SRC}
-)
-
-# setup directories 
+# create library & setup directories 
+add_library(program_opts ${LIBOPTS_SRC} ${LIBOPTS_INC} ${LIBOPTS_DTL})
 set(include_dest  "include/program_opts-${PROJECT_VERSION}")
 set(main_lib_dest "lib/program_opts-${PROJECT_VERSION}")
 set(lib_dest "${main_lib_dest}/${CMAKE_BUILD_TYPE}")
+set(ide_header_group "Header Files")
+source_group("${ide_header_group}" FILES ${LIBOPTS_INC})
+source_group("${ide_header_group}\\detail" FILES ${LIBOPTS_DTL})
 
 target_include_directories(program_opts PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
