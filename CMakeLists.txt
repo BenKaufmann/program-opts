@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(program_options)
-set(program_options_VERSION_MAJOR 1 CACHE STRING "major version" FORCE)
-set(program_options_VERSION_MINOR 0 CACHE STRING "minor version" FORCE)
-set(program_options_VERSION ${program_options_VERSION_MAJOR}.${program_options_VERSION_MINOR} CACHE STRING "version" FORCE)
+project(program_options VERSION 1.0 LANGUAGES CXX)
 
 file(GLOB LIBOPTS_SRC src/*.cpp)
 file(GLOB LIBOPTS_INC program_opts/*.h)
@@ -16,8 +13,8 @@ add_library(program_opts
 )
 
 # setup directories 
-set(include_dest  "include/program_opts-${program_options_VERSION}")
-set(main_lib_dest "lib/program_opts-${program_options_VERSION}")
+set(include_dest  "include/program_opts-${PROJECT_VERSION}")
+set(main_lib_dest "lib/program_opts-${PROJECT_VERSION}")
 set(lib_dest "${main_lib_dest}/${CMAKE_BUILD_TYPE}")
 
 target_include_directories(program_opts PUBLIC
